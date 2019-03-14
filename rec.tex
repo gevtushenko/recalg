@@ -1,8 +1,9 @@
 \documentclass{standalone}
 
 \usepackage{tikz}
-\usepackage{amsmath}
 \usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{nicefrac}
 
 \definecolor{jet}{HTML}{363636}
 \definecolor{outerspace}{HTML}{464646}
@@ -16,26 +17,29 @@
 \definecolor{palmleaf}{HTML}{6DA63F}
 
 \usetikzlibrary{shapes.arrows,chains}
+\newcommand{\I}{\color{isabelline}}
+\newcommand{\N}{{\color{tigerseye} n}\I}
 
 \begin{document}
 
 \begin{tikzpicture}
   % Background
-  \fill [jet] (-4, -4) rectangle (4, 5);
+  \fill [jet] (0, -4) rectangle (10, 5);
 
-  \node at(0, 4) {
-    $T\left(n\right)=aT\left(\frac{n}{b}\right) + f\left(n\right), a \ge 1, b > 1.$\\
+  \node[align=left] at(0, 4)[anchor=north west] {
+    $\I T\left(n\right)=aT\left(\nicefrac{\N}{b}\right) + f\left(\N\right), a \ge 1, b > 1.$\\
+    \I 1. if $f(\N)=O(\N^{\log_{b} a - \epsilon})$ then $T\left(\N\right) = \Theta\left(\N^{\log_{b} a}\right)$
   };
-  \node[align=left,text=isabelline] at(0, 0) {
-    $T\left(n\right)=
+  \node[align=left] at(0, 0)[anchor=north west] {
+    $\I T\left(\N \right)=
         \begin{cases}
-          c,& n \le 1 \\
-          aT\left(n - b\right) + f\left(n\right),& n > 1
+          c,& \N \le 1 \\
+          aT\left(\N - b\right) + f\left(\N\right),& \N > 1
         \end{cases},$\\
-     for $a > 0, b > 0, f(n) = O(n^{k}), k \ge 0.$,\\
-     1. if $a<1$ then $T\left(n\right) = O\left(n^{k}\right)$\\
-     2. if $a=1$ then $T\left(n\right) = O\left(n^{k + 1}\right)$\\
-     3. if $a>1$ then $T\left(n\right) = O\left(n^{k}a^{\frac{n}{b}}\right)$
+     \I for $a > 0, b > 0, f(\N) = O(\N^{k}), k \ge 0.$,\\
+     \I 1. if $a<1$ then $T\left(\N\right) = O\left(\N^{k}\right)$\\
+     \I 2. if $a=1$ then $T\left(\N\right) = O\left(\N^{k + 1}\right)$\\
+     \I 3. if $a>1$ then $T\left(\N\right) = O\left(\N^{k}a^{\frac{\N}{b}}\right)$
   };
 \end{tikzpicture}
 
